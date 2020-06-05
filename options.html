@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+
+<body>
+    <form id='optionsForm'>
+        Use double quotes:: 
+        <input type="checkbox" name="quotes" id="quotes"><br>
+        <input visibility="hidden" type="radio" name="prog" id="prog" value="sqlmap"> SQLMap <br>
+        Show Message on Copy: <input type="checkbox" name="snackbar" id="snackbar" checked="checked"><br>
+        Verbose output: <input type="checkbox" name="verbose" id="verbose"><br><br><br>
+        Any input in the boxes below will be inserted as options for the respective commands<br>
+       SQLMap Options: <input type="text" name="sqlmapUser" id="sqlmapUser" ><br><br><br>
+        
+        <button type="submit">Save</button>
+    </form>
+  <script src="options.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+Manifest-Version: 1.0
+
+Name: background.js
+Digest-Algorithms: MD5 SHA1 SHA256
+MD5-Digest: TP4S/BKQ1rWVYGRndhS2GA==
+SHA1-Digest: PCB97/Xkw75jDRhh0/2qXHEgNJM=
+SHA256-Digest: UvtG1GoFnRC2ZP1kcHtqQrQ9RANZuZ1AiP1CKDsY14E=
+
+Name: clipboard-helper.js
+Digest-Algorithms: MD5 SHA1 SHA256
+MD5-Digest: tDFPztbqrF9ar9pR+aNm2g==
+SHA1-Digest: 39zXoXLRg2nZTruOlwjg5YwJ2FY=
+SHA256-Digest: axFhQX62MwNPnO8C9NClAveznGo1nYItAylvSTaTqDk=
+
+Name: manifest.json
+Digest-Algorithms: MD5 SHA1 SHA256
+MD5-Digest: CoVNfHtG/hLZ1Ybd5m/a7g==
+SHA1-Digest: yTzLs8wi4Pxbbz4qEW7Z49IeWGM=
+SHA256-Digest: odUIevfgY1aTVweTRWmP0Da7qVFJUkXScUADXldYP/E=
+
+Name: options.html
+Digest-Algorithms: MD5 SHA1 SHA256
+MD5-Digest: WlF6qQXvxJ4FeMG7eq/HzQ==
+SHA1-Digest: gffYdrKNKX6UHgSh7BqYYl0jK9I=
+SHA256-Digest: cO8Z3SYWD3SXBfmrPyRxtiXvnxY9VQjqhra8YU2gg9Q=
+
+Name: options.js
+Digest-Algorithms: MD5 SHA1 SHA256
+MD5-Digest: Eudt0sct2Z8Kl2+lugNNNw==
+SHA1-Digest: mBy4IrKcyHWlHu1Fg/AF0kSrpEc=
+SHA256-Digest: MOrFbOKiab85MzFeDlucreD9fcI71hjQw6iIU1ZAYYE=
+
+Name: README.md
+Digest-Algorithms: MD5 SHA1 SHA256
+MD5-Digest: TD6YsrFf1Eu5RqGdwnRGYA==
+SHA1-Digest: jAOgm/tfT9HqVS6siLTGX4vTq+Y=
+SHA256-Digest: PQlm6a4LrHUV0EcJtBIxGfD23ipPaGuQ1uFasLfAHHA=
+
+Name: LICENSE
+Digest-Algorithms: MD5 SHA1 SHA256
+MD5-Digest: l0HDRu71YTEWPhO52xJBsw==
+SHA1-Digest: 0iFXq8D8C0rpY4DAlSjiPPdykKk=
+SHA256-Digest: HyVuytGSiAUQ6ErWBHTqt1iSGHhLmlC8fO7jTCuR8dU=
+
