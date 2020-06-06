@@ -11,9 +11,9 @@
  
  
 var quotesOption = false;
-var programOption = 'curl';
-var fileOption = 'auto';
+var programOption = 'sqlmap';
 var verboseOption = false;
+var ruaOption = true;
 var headers = '';
 var sqlmapheaders = '';
 var snackbarOption = false;
@@ -55,7 +55,10 @@ let getHeaders = (e) => {
     headers = '';
     sqlmapheaders = '';
     for (let header of e.requestHeaders) {
-        sqlmapheaders += " --header '" + header.name + ": " + header.value + "'";
+        if(header.name.match(/Cookie/)) {
+// grabs the cookie value
+                sqlmapheaders += " --cookie '" + header.value + "'";
+        }
     }
     //console.log('headers: ' + headers.toString());
     
@@ -71,6 +74,7 @@ let getHeaders = (e) => {
 function assembleCmd(url, referUrl) {
     let sqlmapText = "sqlmap.py"; // sqlmap command holder
      if (verboseOption) {sqlmapText += " -v 4"; }
+     if (ruaOption) {sqlmapText += " --random-agent"; }
     // ######################################################################
     // use remote suggested filename, how safe is this?  also only available in moderately up to date 
     // ## replacement for -O -J, same security issues though, make optional 
@@ -155,13 +159,12 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
     
     // check the saved options each click in case they changed
     let gettingOptions = browser.storage.sync.get(
-        ['quotes','prog','file','filename','ratelimit','verbose','resume','wgetUser','curlUser', 'sqlmapUser', 'snackbar'])
+        ['quotes','prog','verbose','rua','sqlmapUser', 'snackbar'])
         .then((res) => {
             quotesOption = res.quotes;
             programOption = res.prog;
-            fileOption = res.file;
-            filenameOption = res.filename;
             verboseOption = res.verbose;
+            ruaOption = res.rua;
             sqlmapUserOption = res.sqlmapUser;
             snackbarOption = res.snackbar;
         });
