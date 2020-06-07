@@ -4,9 +4,10 @@ function saveOptions(e) {
     prog: document.querySelector('input[name=prog]:checked').value,
     verbose: document.querySelector('input[name=verbose]').checked,
     rua: document.querySelector('input[name=rua]').checked,
+    dumpall: document.querySelector('input[name=dumpall]').checked,
+    osshell: document.querySelector('input[name=osshell]').checked,
     sqlmapUser: document.querySelector('input[name=sqlmapUser]').value,
-    snackbar: document.querySelector('input[name=snackbar]').checked,
-    
+    snackbar: document.querySelector('input[name=snackbar]').checked, 
   });
     if (typeof(e) !== "undefined") {
         e.preventDefault();
@@ -16,14 +17,16 @@ function saveOptions(e) {
 
 function restoreOptions() {
   var gettingItem = browser.storage.sync.get(
-    ['quotes', 'prog','verbose','rua','resume','sqlmapUser','snackbar']);
+    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'snackbar']);
   gettingItem.then((res) => {
     
     if (Object.keys(res).length > 0 && res.constructor === Object) {
         document.querySelector('input[name=quotes]').checked = res.quotes ? res.quotes : false;
         document.querySelector('input[name=prog][value=' + res.prog + ']').checked = true;
         document.querySelector('input[name=verbose]').checked = res.verbose ? res.verbose : false;
-        document.querySelector('input[name=rua]').checked = res.rua ? res.rua : false;
+        document.querySelector('input[name=rua]').checked = res.rua ? res.rua : true;
+        document.querySelector('input[name=dumpall]').checked = res.dumpall ? res.dumpall : true;
+        document.querySelector('input[name=osshell]').checked = res.osshell ? res.osshell : false;
         document.querySelector('input[name=sqlmapUser]').value = res.sqlmapUser ? res.sqlmapUser : '';
         document.querySelector('input[name=snackbar]').checked = res.snackbar ? res.snackbar : false;
     }

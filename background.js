@@ -13,7 +13,9 @@
 var quotesOption = false;
 var programOption = 'sqlmap';
 var verboseOption = false;
-var ruaOption = true;
+var ruaOption = false;
+var dumpallOption = false;
+var osshellOption = false;
 var headers = '';
 var sqlmapheaders = '';
 var snackbarOption = false;
@@ -73,8 +75,11 @@ let getHeaders = (e) => {
 // main command builder function
 function assembleCmd(url, referUrl) {
     let sqlmapText = "sqlmap.py"; // sqlmap command holder
-     if (verboseOption) {sqlmapText += " -v 4"; }
-     if (ruaOption) {sqlmapText += " --random-agent"; }
+     if (verboseOption) {sqlmapText += " -v 4"; };
+     if (ruaOption) {sqlmapText += " --random-agent"; };
+     if (dumpallOption) {sqlmapText += " --dump-all"; };
+     if (osshellOption) {sqlmapText += " --os-shell"; };
+
     // ######################################################################
     // use remote suggested filename, how safe is this?  also only available in moderately up to date 
     // ## replacement for -O -J, same security issues though, make optional 
@@ -159,12 +164,14 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
     
     // check the saved options each click in case they changed
     let gettingOptions = browser.storage.sync.get(
-        ['quotes','prog','verbose','rua','sqlmapUser', 'snackbar'])
+        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'snackbar'])
         .then((res) => {
             quotesOption = res.quotes;
             programOption = res.prog;
             verboseOption = res.verbose;
             ruaOption = res.rua;
+            dumpallOption = res.dumpall;
+            osshellOption = res.osshell;
             sqlmapUserOption = res.sqlmapUser;
             snackbarOption = res.snackbar;
         });
