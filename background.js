@@ -1,10 +1,5 @@
-/* Written by oxagast.  Edited some things from mycliget to get this to work. */
-
-/*
- * V: 0.0.9 - 3/25/2019
-*/
-
-/*
+/* Written by oxagast.  Edited some things from mycliget to get this to work.
+ * Some of this code from mycliget.
  * clipboard function originated with mozilla webextension examples here:
  * https://github.com/mdn/webextensions-examples
  */
@@ -50,9 +45,6 @@ let ajaxGet = (obj) => {
     });
 };
 
-// callback for onBeforeSendHeaders listener.
-// Returns a promise and adds cancel request to the xmlhttpreq
-// trigger now looped into main promise.all
 let getHeaders = (e) => {
     headers = '';
     sqlmapheaders = '';
@@ -62,7 +54,6 @@ let getHeaders = (e) => {
                 sqlmapheaders += " --cookie '" + header.value + "'";
         }
     }
-    //console.log('headers: ' + headers.toString());
     
 
     var asyncCancel = new Promise((resolve, reject) => {
@@ -80,13 +71,6 @@ function assembleCmd(url, referUrl) {
      if (dumpallOption) {sqlmapText += " --dump-all"; };
      if (osshellOption) {sqlmapText += " --os-shell"; };
 
-    // ######################################################################
-    // use remote suggested filename, how safe is this?  also only available in moderately up to date 
-    // ## replacement for -O -J, same security issues though, make optional 
-    // ## this version will accept filename or location header
-    // curl -s -D - "$url" -o /dev/null | grep -i "filename\|Location" | (IFS= read -r spo; sec=$(echo ${spo//*\//filename=}); echo ${sec#*filename=});
-    // ######################################################################
-    
     
     sqlmapText += sqlmapheaders;
     try {
@@ -99,9 +83,6 @@ function assembleCmd(url, referUrl) {
     
     
     
-    if (quotesOption) {
-        sqlmapText = wgetText.replace(/'/g,'"');
-    }
     const sqlmapCode = "copyToClipboard(" + JSON.stringify(sqlmapText) + ", " + snackbarOption + ");";
     
     switch (programOption) {
@@ -109,7 +90,6 @@ function assembleCmd(url, referUrl) {
             return (sqlmapCode);
             break;
     }
-    //return (programOption === "curl") ? curlCode : wgetCode;
 };
 
 function copyCommand(code, tab)  {
