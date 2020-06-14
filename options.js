@@ -9,7 +9,9 @@ function saveOptions(e) {
     sqlmapUser: document.querySelector('input[name=sqlmapUser]').value,
     keepalive: document.querySelector('input[name=keepalive]').checked,
     nullconn: document.querySelector('input[name=nullconn]').checked,
-          snackbar: document.querySelector('input[name=snackbar]').checked, 
+    textonly: document.querySelector('input[name=textonly]').checked,
+    titleonly: document.querySelector('input[name=titleonly]').checked,
+    snackbar: document.querySelector('input[name=snackbar]').checked, 
 
   });
     if (typeof(e) !== "undefined") {
@@ -20,7 +22,7 @@ function saveOptions(e) {
 
 function restoreOptions() {
   var gettingItem = browser.storage.sync.get(
-    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'snackbar']);
+    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'snackbar']);
   gettingItem.then((res) => {
     
     if (Object.keys(res).length > 0 && res.constructor === Object) {
@@ -33,6 +35,8 @@ function restoreOptions() {
         document.querySelector('input[name=sqlmapUser]').value = res.sqlmapUser ? res.sqlmapUser : '';
         document.querySelector('input[name=keepalive]').value = res.keepalive ? res.keepalive : false;
         document.querySelector('input[name=nullconn]').value = res.nullconn ? res.nullconn : false;
+        document.querySelector('input[name=textonly]').value = res.textonly ? res.textonly : false;
+        document.querySelector('input[name=titleonly]').value = res.titleonly ? res.titleonly : false;
         document.querySelector('input[name=snackbar]').checked = res.snackbar ? res.snackbar : false;
     }
     // if no saved info save the defaults to initialize

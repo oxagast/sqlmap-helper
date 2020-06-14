@@ -16,6 +16,8 @@ var sqlmapheaders = '';
 var keepaliveOption = false;
 var snackbarOption = false;
 var nullconnOption = false;
+var textonlyOption = false;
+var titleonlyOption = false;
 var trigger;
 
 
@@ -74,6 +76,9 @@ function assembleCmd(url, referUrl) {
      if (osshellOption) {sqlmapText += " --os-shell"; };
      if (keepaliveOption) {sqlmapText += " --keep-alive"; };
      if (nullconnOption) {sqlmapText += " --null-connection"; };
+     if (textonlyOption) {sqlmapText += " --text-only"; };
+     if (titleonlyOption) {sqlmapText += " --titles"; };
+
     sqlmapText += sqlmapheaders;
     try {
         if (sqlmapUserOption.replace(/\s/g,'')) { sqlmapText += " " + sqlmapUserOption; }    
@@ -146,7 +151,7 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
     
     // check the saved options each click in case they changed
     let gettingOptions = browser.storage.sync.get(
-        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'snackbar'])
+        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'snackbar'])
         .then((res) => {
             quotesOption = res.quotes;
             programOption = res.prog;
@@ -157,6 +162,8 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
             sqlmapUserOption = res.sqlmapUser;
             keepaliveOption = res.keepalive;
             nullconnOption = res.nullconn;
+            textonlyOption = res.textonly;
+            titleonlyOption = res.titleonly;
             snackbarOption = res.snackbar;
         });
     let promiseCancel = new Promise(function(resolve,reject) {

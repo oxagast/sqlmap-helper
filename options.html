@@ -1,65 +1,103 @@
 <!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8">
-  </head>
-
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="tabs.css" type="text/css" />
+  <title></title>
+</head>
 <body>
-        <table width=100%>
-                <tr>
-                        <td>
-        <img src="sqlmap_logo.png">
-                        </td>
-                </tr>
-        </table>
-    <form id='optionsForm'>
-            <input type="radio" name="prog" id="prog" value="sqlmap">
-      <ul id="menu">
-              <li><a href="#request">Request</a></li>
-              <li><a href="#optimize">Optimization</a></li>
-              <li><a href="#injection">Injection</a></li>
-              <li><a href="#enum">Enumeration</a></li>
-              <li><a href="#tech">Technique</a></li>
-              <li><a href="#detect">Detection</a></li>
-              <li><a href="#brute">Brute force</a></li>
-              <li><a href="#osa">OS Access</a></li>
-              <li><a href="#general">General</a></li>
-              <li><a href="#misc">Misc</a></li>
-              <li><a href="#target">Target</a></li>
-      </ul>
+  <table width="100%">
+    <tr>
+      <td><img src="sqlmap_logo.png" /></td>
+    </tr>
+  </table>
+  <form id='optionsForm' name="optionsForm">
+    <input type="radio" name="prog" id="prog" value="sqlmap" />
+    <ul id="menu">
+      <li>
+        <a href="#request">Request</a>
+      </li>
+      <li>
+        <a href="#optimize">Optimization</a>
+      </li>
+      <li>
+        <a href="#injection">Injection</a>
+      </li>
+      <li>
+        <a href="#enum">Enumeration</a>
+      </li>
+      <li>
+        <a href="#tech">Technique</a>
+      </li>
+      <li>
+        <a href="#detect">Detection</a>
+      </li>
+      <li>
+        <a href="#brute">Brute force</a>
+      </li>
+      <li>
+        <a href="#osa">OS Access</a>
+      </li>
+      <li>
+        <a href="#general">General</a>
+      </li>
+      <li>
+        <a href="#misc">Misc</a>
+      </li>
+      <li>
+        <a href="#target">Target</a>
+      </li>
+    </ul>
     <div class="tab-folder">
-    <div id="request" class="tab-content">
-        Use Random User-Agent: <input type="checkbox" name="rua" id="rua"><br>
-    </div>
-    <div id="optimize" class="tab-content">
-        Connection Keep-Alive: <input type="checkbox" name="keepalive" id="keepalive"><br>
-        Null Connect: <input type="checkbox" name="nullconn" id="nullconn"><br>
-    </div>
-        <div id="injection" class="tab-content">A work in progress</div>
-    <div id="enum" class="tab-content">
-        Dump all tables: <input type="checkbox" name="dumpall" id="dumpall"><br>
-    </div>
-    <div id="tech" class="tab-content">A work in progress</div>
-    <div id="detect" class="tab-content">A work in progress</div>
-    <div id="brute" class="tab-content">A work in progress</div>
-    <div id="osa" class="tab-content">
-        Try to obtain OS shell: <input type="checkbox" name="osshell" id="osshell"><br>
-    </div>
-        <div id="general" class="tab-content">
-        SQLMap Options: <input type="text" name="sqlmapUser" id="sqlmapUser" ><br>
-        Copy confirmation: <input type="checkbox" name="snackbar" id="snackbar" checked="checked"><br>
-        Verbose output: <input type="checkbox" name="verbose" id="verbose"><br>
-        Use double quotes: <input type="checkbox" name="quotes" id="quotes"><br>
-    </div>
-    <div id="misc" class="tab-content">
-    </div>
-    <div id="target" class="tab-content">A work in progress</div>
-</div>  
-        <button type="submit">Save</button>
-    </form>
- <link rel="stylesheet" href="tabs.css">
-    <script src="options.js"></script>
+      <div id="request" class="tab-content">
+        Use Random User-Agent: <input type="checkbox" name="rua"
+        id="rua" /><br />
+      </div>
+      <div id="optimize" class="tab-content">
+        Connection Keep-Alive: <input type="checkbox" name=
+        "keepalive" id="keepalive" /><br />
+        Null Connect: <input type="checkbox" name="nullconn" id=
+        "nullconn" /><br />
+      </div>
+      <div id="injection" class="tab-content">
+        A work in progress
+      </div>
+      <div id="enum" class="tab-content">
+        Dump all tables: <input type="checkbox" name="dumpall" id=
+        "dumpall" /><br />
+      </div>
+      <div id="tech" class="tab-content">
+        A work in progress
+      </div>
+      <div id="detect" class="tab-content">
+        Page text only comparison: <input type="checkbox" name=
+        "textonly" id="textonly" /><br />
+        Page title only comparison: <input type="checkbox" name=
+        "titleonly" id="titleonly" /><br />
+      </div>
+      <div id="brute" class="tab-content">
+        A work in progress
+      </div>
+      <div id="osa" class="tab-content">
+        Try to obtain OS shell: <input type="checkbox" name=
+        "osshell" id="osshell" /><br />
+      </div>
+      <div id="general" class="tab-content">
+        SQLMap Options: <input type="text" name="sqlmapUser" id=
+        "sqlmapUser" /><br />
+        Copy confirmation: <input type="checkbox" name="snackbar"
+        id="snackbar" checked="checked" /><br />
+        Verbose output: <input type="checkbox" name="verbose" id=
+        "verbose" /><br />
+        Use double quotes: <input type="checkbox" name="quotes" id=
+        "quotes" /><br />
+      </div>
+      <div id="misc" class="tab-content"></div>
+      <div id="target" class="tab-content">
+        A work in progress
+      </div>
+    </div><button type="submit">Save</button>
+  </form>
+  <script src="options.js" type="text/javascript"></script>
 </body>
-
 </html>
