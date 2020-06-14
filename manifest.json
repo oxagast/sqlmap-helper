@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "SQLMap Helper",
     "description": "Adds a helper menu for SQLMap.",
-    "version": "0.9r2",
+    "version": "0.10r6",
     "homepage_url": "https://github.com/oxagast/sqlmap-helper",
 
     "background": {
