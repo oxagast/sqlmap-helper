@@ -14,21 +14,49 @@
                 </tr>
         </table>
     <form id='optionsForm'>
-        Use double quotes:: 
-        <input type="checkbox" name="quotes" id="quotes"><br>
-        <input visibility="hidden" type="radio" name="prog" id="prog" value="sqlmap"> SQLMap <br>
-        Copy confirmation: <input type="checkbox" name="snackbar" id="snackbar" checked="checked"><br>
-        Verbose output: <input type="checkbox" name="verbose" id="verbose"><br><br>
+            <input type="radio" name="prog" id="prog" value="sqlmap">
+      <ul id="menu">
+              <li><a href="#request">Request</a></li>
+              <li><a href="#optimize">Optimization</a></li>
+              <li><a href="#injection">Injection</a></li>
+              <li><a href="#enum">Enumeration</a></li>
+              <li><a href="#tech">Technique</a></li>
+              <li><a href="#detect">Detection</a></li>
+              <li><a href="#brute">Brute force</a></li>
+              <li><a href="#osa">OS Access</a></li>
+              <li><a href="#general">General</a></li>
+              <li><a href="#misc">Misc</a></li>
+              <li><a href="#target">Target</a></li>
+      </ul>
+    <div class="tab-folder">
+    <div id="request" class="tab-content">
         Use Random User-Agent: <input type="checkbox" name="rua" id="rua"><br>
+    </div>
+    <div id="optimize" class="tab-content">A work in progress</div>
+    <div id="injection" class="tab-content">A work in progress</div>
+    <div id="enum" class="tab-content">
         Dump all tables: <input type="checkbox" name="dumpall" id="dumpall"><br>
+    </div>
+    <div id="tech" class="tab-content">A work in progress</div>
+    <div id="detect" class="tab-content">A work in progress</div>
+    <div id="brute" class="tab-content">A work in progress</div>
+    <div id="osa" class="tab-content">
         Try to obtain OS shell: <input type="checkbox" name="osshell" id="osshell"><br>
-        <br><br>
-        Any input in the boxes below will be inserted as options for the respective commands<br>
-        SQLMap Options: <input type="text" name="sqlmapUser" id="sqlmapUser" ><br><br><br>
-        
+    </div>
+        <div id="general" class="tab-content">
+        SQLMap Options: <input type="text" name="sqlmapUser" id="sqlmapUser" ><br>
+        Copy confirmation: <input type="checkbox" name="snackbar" id="snackbar" checked="checked"><br>
+        Verbose output: <input type="checkbox" name="verbose" id="verbose"><br>
+        Use double quotes: <input type="checkbox" name="quotes" id="quotes"><br>
+    </div>
+    <div id="misc" class="tab-content">
+    </div>
+    <div id="target" class="tab-content">A work in progress</div>
+</div>  
         <button type="submit">Save</button>
     </form>
-  <script src="options.js"></script>
+ <link rel="stylesheet" href="tabs.css">
+    <script src="options.js"></script>
 </body>
 
 </html>

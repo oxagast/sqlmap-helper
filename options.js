@@ -36,6 +36,6 @@ function restoreOptions() {
     }
   });
 }
-
+document.getElementById("prog").style.visibility = "hidden"; 
 document.addEventListener('DOMContentLoaded', restoreOptions);
 document.querySelector("form").addEventListener("submit", saveOptions);
