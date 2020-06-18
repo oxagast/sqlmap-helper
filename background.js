@@ -19,6 +19,8 @@ var nullconnOption = false;
 var textonlyOption = false;
 var titleonlyOption = false;
 var batchpOption = false;
+var hexOption = false;
+var mobileOption = false;
 var trigger;
 
 
@@ -80,6 +82,9 @@ function assembleCmd(url, referUrl) {
      if (textonlyOption) {sqlmapText += " --text-only"; };
      if (titleonlyOption) {sqlmapText += " --titles"; };
      if (batchpOption) {sqlmapText += " --batch"; };
+     if (hexOption) {sqlmapText += " --hex"; };
+     if (mobileOption) {sqlmapText += " --mobile"; };
+
     sqlmapText += sqlmapheaders;
     try {
         if (sqlmapUserOption.replace(/\s/g,'')) { sqlmapText += " " + sqlmapUserOption; }    
@@ -152,7 +157,7 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
     
     // check the saved options each click in case they changed
     let gettingOptions = browser.storage.sync.get(
-        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'snackbar'])
+        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'snackbar'])
         .then((res) => {
             quotesOption = res.quotes;
             programOption = res.prog;
@@ -166,6 +171,8 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
             textonlyOption = res.textonly;
             titleonlyOption = res.titleonly;
             batchpOption = res.batchp;
+            hexOption = res.hex;
+            mobileOption = res.mobile;
             snackbarOption = res.snackbar;
         });
     let promiseCancel = new Promise(function(resolve,reject) {

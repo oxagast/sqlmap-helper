@@ -12,6 +12,8 @@ function saveOptions(e) {
     textonly: document.querySelector('input[name=textonly]').checked,
     titleonly: document.querySelector('input[name=titleonly]').checked,
     batchp: document.querySelector('input[name=batchp]').checked,
+    hex: document.querySelector('input[name=hex]').checked,
+    mobile: document.querySelector('input[name=mobile]').checked,
     snackbar: document.querySelector('input[name=snackbar]').checked, 
 
   });
@@ -23,7 +25,7 @@ function saveOptions(e) {
 
 function restoreOptions() {
   var gettingItem = browser.storage.sync.get(
-    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'snackbar']);
+    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'snackbar']);
   gettingItem.then((res) => {
     
     if (Object.keys(res).length > 0 && res.constructor === Object) {
@@ -34,11 +36,13 @@ function restoreOptions() {
         document.querySelector('input[name=dumpall]').checked = res.dumpall ? res.dumpall : true;
         document.querySelector('input[name=osshell]').checked = res.osshell ? res.osshell : false;
         document.querySelector('input[name=sqlmapUser]').value = res.sqlmapUser ? res.sqlmapUser : '';
-        document.querySelector('input[name=keepalive]').value = res.keepalive ? res.keepalive : false;
-        document.querySelector('input[name=nullconn]').value = res.nullconn ? res.nullconn : false;
-        document.querySelector('input[name=textonly]').value = res.textonly ? res.textonly : false;
-        document.querySelector('input[name=titleonly]').value = res.titleonly ? res.titleonly : false;
-        document.querySelector('input[name=batchp]').value = res.batchp ? res.batchp : false;
+        document.querySelector('input[name=keepalive]').checked = res.keepalive ? res.keepalive : false;
+        document.querySelector('input[name=nullconn]').checked = res.nullconn ? res.nullconn : false;
+        document.querySelector('input[name=textonly]').checked = res.textonly ? res.textonly : false;
+        document.querySelector('input[name=titleonly]').checked = res.titleonly ? res.titleonly : false;
+        document.querySelector('input[name=batchp]').checked = res.batchp ? res.batchp : false;
+        document.querySelector('input[name=hex]').checked = res.hex ? res.hex : false;
+        document.QuerySelector('input[name=mobile]').checked = res.mobile ? res.mobile : false;
         document.querySelector('input[name=snackbar]').checked = res.snackbar ? res.snackbar : false;
     }
     // if no saved info save the defaults to initialize
