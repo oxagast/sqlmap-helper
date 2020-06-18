@@ -11,7 +11,7 @@ function saveOptions(e) {
     nullconn: document.querySelector('input[name=nullconn]').checked,
     textonly: document.querySelector('input[name=textonly]').checked,
     titleonly: document.querySelector('input[name=titleonly]').checked,
-    batch: document.querySelector('input[name=batchp]').checked,
+    batchp: document.querySelector('input[name=batchp]').checked,
     snackbar: document.querySelector('input[name=snackbar]').checked, 
 
   });
