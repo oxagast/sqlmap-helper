@@ -11,6 +11,7 @@ function saveOptions(e) {
     nullconn: document.querySelector('input[name=nullconn]').checked,
     textonly: document.querySelector('input[name=textonly]').checked,
     titleonly: document.querySelector('input[name=titleonly]').checked,
+    batch: document.querySelector('input[name=batchp]').checked,
     snackbar: document.querySelector('input[name=snackbar]').checked, 
 
   });
@@ -22,7 +23,7 @@ function saveOptions(e) {
 
 function restoreOptions() {
   var gettingItem = browser.storage.sync.get(
-    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'snackbar']);
+    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'snackbar']);
   gettingItem.then((res) => {
     
     if (Object.keys(res).length > 0 && res.constructor === Object) {
@@ -37,6 +38,7 @@ function restoreOptions() {
         document.querySelector('input[name=nullconn]').value = res.nullconn ? res.nullconn : false;
         document.querySelector('input[name=textonly]').value = res.textonly ? res.textonly : false;
         document.querySelector('input[name=titleonly]').value = res.titleonly ? res.titleonly : false;
+        document.querySelector('input[name=batchp]').value = res.batchp ? res.batchp : false;
         document.querySelector('input[name=snackbar]').checked = res.snackbar ? res.snackbar : false;
     }
     // if no saved info save the defaults to initialize
