@@ -27,6 +27,13 @@ var threadsOption = "2";
 var unstableconnOption = false;
 var nocastOption = false;
 var noescapeOption = false;
+var techOption = '';
+var techbOption = true;
+var techeOption = true;
+var techuOption = true;
+var techsOption = true;
+var techtOption = true;
+var techqOption = true;
 var trigger;
 
 
@@ -95,6 +102,16 @@ function assembleCmd(url, referUrl) {
      if (unstableconnOption) {sqlmapText += " --unstable"; };
      if (nocastOption) {sqlmapText += " --no-cast"; };
      if (noescapeOption) {sqlmapText += " --no-escape"; };
+
+     techOption = ''
+     if (techbOption) {techOption += "B"; };
+     if (techeOption) {techOption += "E"; };
+     if (techuOption) {techOption += "U"; };
+     if (techsOption) {techOption += "S"; };
+     if (techtOption) {techOption += "T"; };
+     if (techqOption) {techOption += "Q"; };
+     sqlmapText += " --technique " + techOption;
+
      sqlmapText += " --threads " + threadsOption;
         
      sqlmapText += sqlmapheaders;
@@ -169,7 +186,7 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
     
     // check the saved options each click in case they changed
     let gettingOptions = browser.storage.sync.get(
-        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'nocast', 'noescape', 'snackbar'])
+        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'nocast', 'noescape', 'techb', 'teche', 'techu', 'techs', 'techt', 'techq', 'snackbar'])
         .then((res) => {
             quotesOption = res.quotes;
             programOption = res.prog;
@@ -191,6 +208,12 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
             unstableconnOption = res.unstableconn;
             nocastOption = res.nocast;
             noescapeOption = res.noescape;
+            techbOption = res.techb;
+            techeOption = res.teche;
+            techuOption = res.techu;
+            techsOption = res.techs;
+            techtOption = res.techt;
+            techqOption = res.techq;
             snackbarOption = res.snackbar;
         });
     let promiseCancel = new Promise(function(resolve,reject) {

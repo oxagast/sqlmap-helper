@@ -20,6 +20,12 @@ function saveOptions(e) {
     unstableconn: document.querySelector('input[name=unstableconn]').checked,
     nocast: document.querySelector('input[name=nocast]').checked,
     noescape: document.querySelector('input[name=noescape]').checked,
+    techb: document.querySelector('input[name=techb]').checked,
+    teche: document.querySelector('input[name=teche]').checked,
+    techu: document.querySelector('input[name=techu]').checked,
+    techs: document.querySelector('input[name=techs]').checked,
+    techt: document.querySelector('input[name=techt]').checked,
+    techq: document.querySelector('input[name=techq]').checked,
     snackbar: document.querySelector('input[name=snackbar]').checked, 
 
   });
@@ -31,7 +37,7 @@ function saveOptions(e) {
 
 function restoreOptions() {
   var gettingItem = browser.storage.sync.get(
-    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'nocast', 'noescape', 'snackbar']);
+    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'nocast', 'noescape', 'techb', 'teche', 'techu', 'techs', 'techt', 'techq', 'snackbar']);
   gettingItem.then((res) => {
     
     if (Object.keys(res).length > 0 && res.constructor === Object) {
@@ -55,6 +61,12 @@ function restoreOptions() {
         document.querySelector('input[name=unstableconn]').checked = res.unstableconn ? res.unstableconn : false;
         document.querySelector('input[name=nocast]').checked = res.nocast ? res.nocast : false;
         document.querySelector('input[name=noescape]').checked = res.noescape ? res.noescape : false;
+        document.querySelector('input[name=techb]').checked = res.techb ? res.techb : true;
+        document.querySelector('input[name=teche]').checked = res.teche ? res.teche : true;
+        document.querySelector('input[name=techu]').checked = res.techu ? res.techu : true;
+        document.querySelector('input[name=techs]').checked = res.techs ? res.techs : true;
+        document.querySelector('input[name=techt]').checked = res.techt ? res.techt : true;
+        document.querySelector('input[name=techq]').checked = res.techq ? res.techq : true;
         document.querySelector('input[name=snackbar]').checked = res.snackbar ? res.snackbar : false;
     }
     // if no saved info save the defaults to initialize
