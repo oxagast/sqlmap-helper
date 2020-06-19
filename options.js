@@ -18,6 +18,8 @@ function saveOptions(e) {
     dropcook: document.querySelector('input[name=dropcook]').checked,
     threads: document.querySelector('input[name=threads]').value,
     unstableconn: document.querySelector('input[name=unstableconn]').checked,
+    nocast: document.querySelector('input[name=nocast]').checked,
+    noescape: document.querySelector('input[name=noescape]').checked,
     snackbar: document.querySelector('input[name=snackbar]').checked, 
 
   });
@@ -29,7 +31,7 @@ function saveOptions(e) {
 
 function restoreOptions() {
   var gettingItem = browser.storage.sync.get(
-    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'snackbar']);
+    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'nocast', 'noescape', 'snackbar']);
   gettingItem.then((res) => {
     
     if (Object.keys(res).length > 0 && res.constructor === Object) {
@@ -51,6 +53,8 @@ function restoreOptions() {
         document.querySelector('input[name=dropcook]').checked = res.dropcook ? res.dropcook : false;
         document.querySelector('input[name=threads]').value = res.threads ? res.threads : '2';
         document.querySelector('input[name=unstableconn]').checked = res.unstableconn ? res.unstableconn : false;
+        document.querySelector('input[name=nocast]').checked = res.nocast ? res.nocast : false;
+        document.querySelector('input[name=noescape]').checked = res.noescape ? res.noescape : false;
         document.querySelector('input[name=snackbar]').checked = res.snackbar ? res.snackbar : false;
     }
     // if no saved info save the defaults to initialize

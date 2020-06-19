@@ -25,6 +25,8 @@ var chunkedOption = false;
 var dropcookOption = false;
 var threadsOption = "2";
 var unstableconnOption = false;
+var nocastOption = false;
+var noescapeOption = false;
 var trigger;
 
 
@@ -91,8 +93,11 @@ function assembleCmd(url, referUrl) {
      if (chunkedOption) {sqlmapText += " --chunked"; };
      if (dropcookOption) {sqlmapText += " --drop-set-cookie"; };
      if (unstableconnOption) {sqlmapText += " --unstable"; };
+     if (nocastOption) {sqlmapText += " --no-cast"; };
+     if (noescapeOption) {sqlmapText += " --no-escape"; };
      sqlmapText += " --threads " + threadsOption;
-    sqlmapText += sqlmapheaders;
+        
+     sqlmapText += sqlmapheaders;
     try {
         if (sqlmapUserOption.replace(/\s/g,'')) { sqlmapText += " " + sqlmapUserOption; }    
     }
@@ -164,7 +169,7 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
     
     // check the saved options each click in case they changed
     let gettingOptions = browser.storage.sync.get(
-        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'snackbar'])
+        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'nocast', 'noescape', 'snackbar'])
         .then((res) => {
             quotesOption = res.quotes;
             programOption = res.prog;
@@ -184,6 +189,8 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
             dropcookOption = res.dropcook;
             threadsOption = res.threads;
             unstableconnOption = res.unstableconn;
+            nocastOption = res.nocast;
+            noescapeOption = res.noescape;
             snackbarOption = res.snackbar;
         });
     let promiseCancel = new Promise(function(resolve,reject) {
