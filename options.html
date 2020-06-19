@@ -44,21 +44,8 @@
       <li>
         <a href="#misc">Misc</a>
       </li>
-      <li>
-        <a href="#target">Target</a>
-      </li>
     </ul>
     <div class="tab-folder">
-      <div id="request" class="tab-content">
-        Use Random User-Agent: <input type="checkbox" name="rua"
-        id="rua" /><br />
-        Use Mobile User-Agent: <input type="checkbox" name="mobile"
-        id="mobile" /><br />
-        HTTP Chunked transfer encoding: <input type="checkbox" name="chunked"
-        id="chunked" /><br />
-        Drop Set-Cookie header: <input type="checkbox" name="dropcook"
-        id="dropcook" /><br />
-      </div>
       <div id="optimize" class="tab-content">
         Connection Keep-Alive: <input type="checkbox" name=
         "keepalive" id="keepalive" /><br />
@@ -101,10 +88,24 @@
         Use double quotes: <input type="checkbox" name="quotes" id=
         "quotes" /><br />
       </div>
-      <div id="misc" class="tab-content"></div>
-      <div id="target" class="tab-content">
-        A work in progress
+      <div id="misc" class="tab-content">
+      Adjust for unstable connection: <input type="checkbox" name="unstableconn" id=
+      "unstableconn" /><br />
       </div>
+      <div id="request" class="tab-content">
+        Use Random User-Agent: <input type="checkbox" name="rua"
+        id="rua" /><br />
+        Use Mobile User-Agent: <input type="checkbox" name="mobile"
+        id="mobile" /><br />
+        HTTP Chunked transfer encoding: <input type="checkbox" name="chunked"
+        id="chunked" /><br />
+        Drop Set-Cookie header: <input type="checkbox" name="dropcook"
+        id="dropcook" /><br />
+      </div>
+ 
+      </div>
+
+
     </div><button type="submit">Save</button>
   </form>
   <script src="options.js" type="text/javascript"></script>

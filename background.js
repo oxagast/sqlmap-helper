@@ -24,6 +24,7 @@ var mobileOption = false;
 var chunkedOption = false;
 var dropcookOption = false;
 var threadsOption = "2";
+var unstableconnOption = false;
 var trigger;
 
 
@@ -89,6 +90,7 @@ function assembleCmd(url, referUrl) {
      if (mobileOption) {sqlmapText += " --mobile"; };
      if (chunkedOption) {sqlmapText += " --chunked"; };
      if (dropcookOption) {sqlmapText += " --drop-set-cookie"; };
+     if (unstableconnOption) {sqlmapText += " --unstable"; };
      sqlmapText += " --threads " + threadsOption;
     sqlmapText += sqlmapheaders;
     try {
@@ -162,7 +164,7 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
     
     // check the saved options each click in case they changed
     let gettingOptions = browser.storage.sync.get(
-        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'snackbar'])
+        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'snackbar'])
         .then((res) => {
             quotesOption = res.quotes;
             programOption = res.prog;
@@ -181,6 +183,7 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
             chunkedOption = res.chunked;
             dropcookOption = res.dropcook;
             threadsOption = res.threads;
+            unstableconnOption = res.unstableconn;
             snackbarOption = res.snackbar;
         });
     let promiseCancel = new Promise(function(resolve,reject) {

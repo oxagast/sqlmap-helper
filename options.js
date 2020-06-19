@@ -17,6 +17,7 @@ function saveOptions(e) {
     chunked: document.querySelector('input[name=chunked]').checked,
     dropcook: document.querySelector('input[name=dropcook]').checked,
     threads: document.querySelector('input[name=threads]').value,
+    unstableconn: document.querySelector('input[name=unstableconn]').checked,
     snackbar: document.querySelector('input[name=snackbar]').checked, 
 
   });
@@ -28,7 +29,7 @@ function saveOptions(e) {
 
 function restoreOptions() {
   var gettingItem = browser.storage.sync.get(
-    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'snackbar']);
+    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'snackbar']);
   gettingItem.then((res) => {
     
     if (Object.keys(res).length > 0 && res.constructor === Object) {
@@ -49,6 +50,7 @@ function restoreOptions() {
         document.querySelector('input[name=chunked]').checked = res.chunked ? res.chunked : false;
         document.querySelector('input[name=dropcook]').checked = res.dropcook ? res.dropcook : false;
         document.querySelector('input[name=threads]').value = res.threads ? res.threads : '2';
+        document.querySelector('input[name=unstableconn]').checked = res.unstableconn ? res.unstableconn : false;
         document.querySelector('input[name=snackbar]').checked = res.snackbar ? res.snackbar : false;
     }
     // if no saved info save the defaults to initialize
