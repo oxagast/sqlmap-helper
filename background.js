@@ -21,6 +21,9 @@ var titleonlyOption = false;
 var batchpOption = false;
 var hexOption = false;
 var mobileOption = false;
+var chunkedOption = false;
+var dropcookOption = false;
+var threadsOption = "2";
 var trigger;
 
 
@@ -84,7 +87,9 @@ function assembleCmd(url, referUrl) {
      if (batchpOption) {sqlmapText += " --batch"; };
      if (hexOption) {sqlmapText += " --hex"; };
      if (mobileOption) {sqlmapText += " --mobile"; };
-
+     if (chunkedOption) {sqlmapText += " --chunked"; };
+     if (dropcookOption) {sqlmapText += " --drop-set-cookie"; };
+     sqlmapText += " --threads " + threadsOption;
     sqlmapText += sqlmapheaders;
     try {
         if (sqlmapUserOption.replace(/\s/g,'')) { sqlmapText += " " + sqlmapUserOption; }    
@@ -157,7 +162,7 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
     
     // check the saved options each click in case they changed
     let gettingOptions = browser.storage.sync.get(
-        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'snackbar'])
+        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'snackbar'])
         .then((res) => {
             quotesOption = res.quotes;
             programOption = res.prog;
@@ -173,6 +178,9 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
             batchpOption = res.batchp;
             hexOption = res.hex;
             mobileOption = res.mobile;
+            chunkedOption = res.chunked;
+            dropcookOption = res.dropcook;
+            threadsOption = res.threads;
             snackbarOption = res.snackbar;
         });
     let promiseCancel = new Promise(function(resolve,reject) {

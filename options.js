@@ -14,6 +14,9 @@ function saveOptions(e) {
     batchp: document.querySelector('input[name=batchp]').checked,
     hex: document.querySelector('input[name=hex]').checked,
     mobile: document.querySelector('input[name=mobile]').checked,
+    chunked: document.querySelector('input[name=chunked]').checked,
+    dropcook: document.querySelector('input[name=dropcook]').checked,
+    threads: document.querySelector('input[name=threads]').value,
     snackbar: document.querySelector('input[name=snackbar]').checked, 
 
   });
@@ -25,7 +28,7 @@ function saveOptions(e) {
 
 function restoreOptions() {
   var gettingItem = browser.storage.sync.get(
-    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'snackbar']);
+    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'snackbar']);
   gettingItem.then((res) => {
     
     if (Object.keys(res).length > 0 && res.constructor === Object) {
@@ -42,7 +45,10 @@ function restoreOptions() {
         document.querySelector('input[name=titleonly]').checked = res.titleonly ? res.titleonly : false;
         document.querySelector('input[name=batchp]').checked = res.batchp ? res.batchp : false;
         document.querySelector('input[name=hex]').checked = res.hex ? res.hex : false;
-        document.QuerySelector('input[name=mobile]').checked = res.mobile ? res.mobile : false;
+        document.querySelector('input[name=mobile]').checked = res.mobile ? res.mobile : false;
+        document.querySelector('input[name=chunked]').checked = res.chunked ? res.chunked : false;
+        document.querySelector('input[name=dropcook]').checked = res.dropcook ? res.dropcook : false;
+        document.querySelector('input[name=threads]').value = res.threads ? res.threads : '2';
         document.querySelector('input[name=snackbar]').checked = res.snackbar ? res.snackbar : false;
     }
     // if no saved info save the defaults to initialize
