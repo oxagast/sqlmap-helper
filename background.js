@@ -8,7 +8,7 @@
 var quotesOption = false;
 var programOption = 'sqlmap';
 var verboseOption = false;
-var ruaOption = false;
+var uaOption = 'sqlmapua';
 var dumpallOption = false;
 var osshellOption = false;
 var headers = '';
@@ -20,7 +20,6 @@ var textonlyOption = false;
 var titleonlyOption = false;
 var batchpOption = false;
 var hexOption = false;
-var mobileOption = false;
 var chunkedOption = false;
 var dropcookOption = false;
 var threadsOption = "2";
@@ -91,7 +90,7 @@ let getHeaders = (e) => {
 function assembleCmd(url, referUrl) {
     let sqlmapText = "sqlmap.py"; // sqlmap command holder
      if (verboseOption) {sqlmapText += " -v 4"; };
-     if (ruaOption) {sqlmapText += " --random-agent"; };
+     if (uaOption === "rua") {sqlmapText += " --random-agent"; };
      if (dumpallOption) {sqlmapText += " --dump-all"; };
      if (osshellOption) {sqlmapText += " --os-shell"; };
      if (keepaliveOption) {sqlmapText += " --keep-alive"; };
@@ -100,7 +99,7 @@ function assembleCmd(url, referUrl) {
      if (titleonlyOption) {sqlmapText += " --titles"; };
      if (batchpOption) {sqlmapText += " --batch"; };
      if (hexOption) {sqlmapText += " --hex"; };
-     if (mobileOption) {sqlmapText += " --mobile"; };
+     if (uaOption === "mobile") {sqlmapText += " --mobile"; };
      if (chunkedOption) {sqlmapText += " --chunked"; };
      if (dropcookOption) {sqlmapText += " --drop-set-cookie"; };
      if (unstableconnOption) {sqlmapText += " --unstable"; };
@@ -194,12 +193,12 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
     
     // check the saved options each click in case they changed
     let gettingOptions = browser.storage.sync.get(
-        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'nocast', 'noescape', 'techb', 'teche', 'techu', 'techs', 'techt', 'techq', 'dbs', 'ctables', 'ccolumns', 'cfiles', 'snackbar'])
+        ['quotes','prog','verbose','ua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'chunked', 'dropcook', 'threads', 'unstableconn', 'nocast', 'noescape', 'techb', 'teche', 'techu', 'techs', 'techt', 'techq', 'dbs', 'ctables', 'ccolumns', 'cfiles', 'snackbar'])
         .then((res) => {
             quotesOption = res.quotes;
             programOption = res.prog;
             verboseOption = res.verbose;
-            ruaOption = res.rua;
+            uaOption = res.ua;
             dumpallOption = res.dumpall;
             osshellOption = res.osshell;
             sqlmapUserOption = res.sqlmapUser;
@@ -209,7 +208,6 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
             titleonlyOption = res.titleonly;
             batchpOption = res.batchp;
             hexOption = res.hex;
-            mobileOption = res.mobile;
             chunkedOption = res.chunked;
             dropcookOption = res.dropcook;
             threadsOption = res.threads;

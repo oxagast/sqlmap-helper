@@ -3,7 +3,7 @@ function saveOptions(e) {
     quotes: document.querySelector('input[name=quotes]').checked,
     prog: document.querySelector('input[name=prog]:checked').value,
     verbose: document.querySelector('input[name=verbose]').checked,
-    rua: document.querySelector('input[name=rua]').checked,
+    ua: document.querySelector('input[name=ua]:checked').value,
     dumpall: document.querySelector('input[name=dumpall]').checked,
     osshell: document.querySelector('input[name=osshell]').checked,
     sqlmapUser: document.querySelector('input[name=sqlmapUser]').value,
@@ -13,7 +13,6 @@ function saveOptions(e) {
     titleonly: document.querySelector('input[name=titleonly]').checked,
     batchp: document.querySelector('input[name=batchp]').checked,
     hex: document.querySelector('input[name=hex]').checked,
-    mobile: document.querySelector('input[name=mobile]').checked,
     chunked: document.querySelector('input[name=chunked]').checked,
     dropcook: document.querySelector('input[name=dropcook]').checked,
     threads: document.querySelector('input[name=threads]').value,
@@ -41,14 +40,14 @@ function saveOptions(e) {
 
 function restoreOptions() {
   var gettingItem = browser.storage.sync.get(
-    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'nocast', 'noescape', 'techb', 'teche', 'techu', 'techs', 'techt', 'techq', 'dbs', 'ctables', 'ccolumns', 'cfiles', 'snackbar']);
+    ['quotes', 'prog', 'verbose', 'ua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'chunked', 'dropcook', 'threads', 'unstableconn', 'nocast', 'noescape', 'techb', 'teche', 'techu', 'techs', 'techt', 'techq', 'dbs', 'ctables', 'ccolumns', 'cfiles', 'snackbar']);
   gettingItem.then((res) => {
     
     if (Object.keys(res).length > 0 && res.constructor === Object) {
         document.querySelector('input[name=quotes]').checked = res.quotes ? res.quotes : false;
         document.querySelector('input[name=prog][value=' + res.prog + ']').checked = true;
         document.querySelector('input[name=verbose]').checked = res.verbose ? res.verbose : false;
-        document.querySelector('input[name=rua]').checked = res.rua ? res.rua : true;
+        document.querySelector('input[name=ua][value=' + res.ua + ']').checked = true;
         document.querySelector('input[name=dumpall]').checked = res.dumpall ? res.dumpall : true;
         document.querySelector('input[name=osshell]').checked = res.osshell ? res.osshell : false;
         document.querySelector('input[name=sqlmapUser]').value = res.sqlmapUser ? res.sqlmapUser : '';
@@ -58,7 +57,6 @@ function restoreOptions() {
         document.querySelector('input[name=titleonly]').checked = res.titleonly ? res.titleonly : false;
         document.querySelector('input[name=batchp]').checked = res.batchp ? res.batchp : false;
         document.querySelector('input[name=hex]').checked = res.hex ? res.hex : false;
-        document.querySelector('input[name=mobile]').checked = res.mobile ? res.mobile : false;
         document.querySelector('input[name=chunked]').checked = res.chunked ? res.chunked : false;
         document.querySelector('input[name=dropcook]').checked = res.dropcook ? res.dropcook : false;
         document.querySelector('input[name=threads]').value = res.threads ? res.threads : '2';
