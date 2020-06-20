@@ -26,6 +26,10 @@ function saveOptions(e) {
     techs: document.querySelector('input[name=techs]').checked,
     techt: document.querySelector('input[name=techt]').checked,
     techq: document.querySelector('input[name=techq]').checked,
+    dbs: document.querySelector('input[name=dbs]').checked,
+    ctables: document.querySelector('input[name=ctables]').checked,
+    ccolumns: document.querySelector('input[name=ccolumns]').checked,
+    cfiles: document.querySelector('input[name=cfiles]').checked,
     snackbar: document.querySelector('input[name=snackbar]').checked, 
 
   });
@@ -37,7 +41,7 @@ function saveOptions(e) {
 
 function restoreOptions() {
   var gettingItem = browser.storage.sync.get(
-    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'nocast', 'noescape', 'techb', 'teche', 'techu', 'techs', 'techt', 'techq', 'snackbar']);
+    ['quotes', 'prog', 'verbose', 'rua', 'dumpall', 'osshell', 'sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'nocast', 'noescape', 'techb', 'teche', 'techu', 'techs', 'techt', 'techq', 'dbs', 'ctables', 'ccolumns', 'cfiles', 'snackbar']);
   gettingItem.then((res) => {
     
     if (Object.keys(res).length > 0 && res.constructor === Object) {
@@ -67,6 +71,10 @@ function restoreOptions() {
         document.querySelector('input[name=techs]').checked = res.techs ? res.techs : true;
         document.querySelector('input[name=techt]').checked = res.techt ? res.techt : true;
         document.querySelector('input[name=techq]').checked = res.techq ? res.techq : true;
+        document.querySelector('input[name=dbs]').checked = res.dbs ? res.dbs : true;
+        document.querySelector('input[name=ctables]').checked = res.ctables ? res.ctables : false;
+        document.querySelector('input[name=ccolumns]').checked = res.ccolumns ? res.ccolumns : false;
+        document.querySelector('input[name=cfiles]').checked = res.cfiles ? res.cfiles : false;
         document.querySelector('input[name=snackbar]').checked = res.snackbar ? res.snackbar : false;
     }
     // if no saved info save the defaults to initialize

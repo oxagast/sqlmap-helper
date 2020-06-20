@@ -34,6 +34,10 @@ var techuOption = true;
 var techsOption = true;
 var techtOption = true;
 var techqOption = true;
+var dbsOption = true;
+var ctablesOption = false;
+var ccolumnsOption = false;
+var cfilesOption = false;
 var trigger;
 
 
@@ -102,6 +106,10 @@ function assembleCmd(url, referUrl) {
      if (unstableconnOption) {sqlmapText += " --unstable"; };
      if (nocastOption) {sqlmapText += " --no-cast"; };
      if (noescapeOption) {sqlmapText += " --no-escape"; };
+     if (dbsOption) {sqlmapText += " --dbs"; };
+     if (ctablesOption) {sqlmapText += " --common-tables"; };
+     if (ccolumnsOption) {sqlmapText += " --common-columns"; };
+     if (cfilesOption) {sqlmapText += " --common-files"; };
 
      techOption = ''
      if (techbOption) {techOption += "B"; };
@@ -186,7 +194,7 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
     
     // check the saved options each click in case they changed
     let gettingOptions = browser.storage.sync.get(
-        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'nocast', 'noescape', 'techb', 'teche', 'techu', 'techs', 'techt', 'techq', 'snackbar'])
+        ['quotes','prog','verbose','rua','dumpall','osshell','sqlmapUser', 'keepalive', 'nullconn', 'textonly', 'titleonly', 'batchp', 'hex', 'mobile', 'chunked', 'dropcook', 'threads', 'unstableconn', 'nocast', 'noescape', 'techb', 'teche', 'techu', 'techs', 'techt', 'techq', 'dbs', 'ctables', 'ccolumns', 'cfiles', 'snackbar'])
         .then((res) => {
             quotesOption = res.quotes;
             programOption = res.prog;
@@ -214,6 +222,10 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
             techsOption = res.techs;
             techtOption = res.techt;
             techqOption = res.techq;
+            dbsOption = res.dbs;
+            ctablesOption = res.ctables;
+            ccolumnsOption = res.ccolumns;
+            cfilesOption = res.cfiles;
             snackbarOption = res.snackbar;
         });
     let promiseCancel = new Promise(function(resolve,reject) {
