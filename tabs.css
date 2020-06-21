@@ -4,3 +4,23 @@
 .tab-folder > :last-child, .tab-folder > .tab-content:target {
     display: block;
 }
+
+body {
+        height: 450px;
+}
+
+div.tab-folder {
+  position: absolute;
+  left: 200px;
+  top: 30px;
+}
+div.tab-holder {
+        position: fixed;
+        left: 50px;
+}
+div.save {
+        position: absolute;
+        right: 50px;
+        bottom: 50px;
+}
+
